@@ -5,7 +5,7 @@ AudioIn in;
 Amplitude amp;
 int bands = 2048;
 float[] spectrum = new float[bands];
-boolean draxFFT = false;
+boolean drawFFT = false;
 
 int MidiCC0 = 0;
 int MidiCC1 = 0;
@@ -41,8 +41,7 @@ void setup() {
   cursor(CROSS);
   
   MidiBus.list();  
-  // Connect to one of the devices
-  myBus = new MidiBus(this, 1, 1);
+  MidiBus.availableInputs();
   
   // Create an Input stream which is routed into the Amplitude analyzer
   fft = new FFT(this, bands);
